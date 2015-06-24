@@ -1,0 +1,21 @@
+<!DOCTYPE BXML>
+<Border title="Contact list" xmlns:bxml="http://pivot.apache.org/bxml"
+	xmlns:content="org.apache.pivot.wtk.content" xmlns:beans="org.apache.pivot.beans"
+	xmlns="org.apache.pivot.wtk" xmlns:component="pivot_contrib.mvcSample"
+	xmlns:validator="pivot_contrib.util.validator">
+	<ScrollPane horizontalScrollBarPolicy="fill_to_capacity">
+		<TableView bxml:id="contactListTable" tableData="${model.contacts}">
+			<columns>
+				<TableView.Column name="name" width="300"
+					headerData="Name" />
+				<TableView.Column name="phoneNumber" width="1*"
+					headerData="Phone number" />
+			</columns>
+		</TableView>
+
+		<columnHeader>
+			<TableViewHeader tableView="$contactListTable"
+				sortMode="single_column" />
+		</columnHeader>
+	</ScrollPane>
+</Border>

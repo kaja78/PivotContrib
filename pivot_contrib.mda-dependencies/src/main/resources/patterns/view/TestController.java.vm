@@ -1,0 +1,14 @@
+package ${element.parent.name};
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class Test${element.name}Controller {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

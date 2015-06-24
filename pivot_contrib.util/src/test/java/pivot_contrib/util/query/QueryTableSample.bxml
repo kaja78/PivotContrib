@@ -1,0 +1,20 @@
+<!DOCTYPE BXML>
+<query:QueryTableSample title="QueryTable Sample"
+	xmlns:bxml="http://pivot.apache.org/bxml" xmlns:collections="org.apache.pivot.collections"
+	xmlns="org.apache.pivot.wtk" xmlns:query="pivot_contrib.util.query">
+
+	<ScrollPane>
+		<query:QueryTable bxml:id="queryTable">
+			<columns>
+				<TableView.Column name="NAME" width="180"
+					headerData="Name" />
+				<TableView.Column name="LOCATION" width="180"
+					headerData="Location" />
+			</columns>
+		</query:QueryTable>
+
+		<columnHeader>
+			<TableViewHeader tableView="$queryTable" sortMode="single_column"/>
+		</columnHeader>
+	</ScrollPane>
+</query:QueryTableSample>

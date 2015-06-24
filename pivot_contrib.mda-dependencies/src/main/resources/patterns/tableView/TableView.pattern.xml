@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:Pattern xmlns:tns="http://www.example.org/dirigent-pattern/"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/dirigent-pattern/ ../dirigent-pattern.xsd ">
+	<Documentation>Pattern for generating Pivot View files.</Documentation>
+	<PatternStep name="View" type="File">
+		<Parameter name="fileName" value="src/${element.packagePath}/${element.name}View.bxml" />
+		<Parameter name="mode" value="create" />
+		<Template>#parse("/patterns/tableView/TableView.bxml.vm")</Template>
+	</PatternStep>
+	<PatternStep name="TestView" type="File">
+		<Parameter name="fileName" value="test/${element.packagePath}/Test${element.name}View.java" />
+		<Parameter name="mode" value="create" />
+		<Template>#parse("/patterns/tableView/TestTableView.java.vm")</Template>
+	</PatternStep>
+
+</tns:Pattern>

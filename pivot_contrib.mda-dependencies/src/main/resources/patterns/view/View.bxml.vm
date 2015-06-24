@@ -1,0 +1,24 @@
+<!DOCTYPE BXML>
+<Border styles="{padding:5}" title="${element.name}" 
+	xmlns="org.apache.pivot.wtk"
+	xmlns:bxml="http://pivot.apache.org/bxml"
+	xmlns:view="${element.parent.name}">
+	<bxml:define>
+		<view:${element.name}Model bxml:id="model"/>
+		<view:${element.name}Controller bxml:id="controller" />
+	</bxml:define>
+	
+	<!--  
+	<TablePane styles="{verticalSpacing:5,horizontalSpacing:5}">
+		<columns>
+			<TablePane.Column width="1*" />
+		</columns>
+		<TablePane.Row height="-1">
+			<bxml:include src="Form.bxml" inline="true" />
+		</TablePane.Row>
+		<TablePane.Row height="-1">
+			<bxml:include src="TableView.bxml" inline="true" />
+		</TablePane.Row>
+	</TablePane>
+	-->
+</Border>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<display-name>pivot-extensions-server</display-name>
+
+	<filter>
+		<filter-name>RMISerializerFilter</filter-name>
+		<filter-class>pivot_contrib.rmiServer.RMISerializerFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>RMISerializerFilter</filter-name>
+		<servlet-name>RMIServlet</servlet-name>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>RMIServlet</servlet-name>
+		<servlet-class>pivot_contrib.rmiServer.RMIServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RMIServlet</servlet-name>
+		<url-pattern>/rmi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RMIServlet</servlet-name>
+		<url-pattern>/secured/rmi</url-pattern>
+	</servlet-mapping>
+
+	
+
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
+
+	<security-role>
+		<role-name>tomcat</role-name>
+	</security-role>
+	<security-constraint>
+		<display-name>secured</display-name>
+		<web-resource-collection>
+			<web-resource-name>RMI</web-resource-name>
+			<url-pattern>/secured/rmi</url-pattern>
+			<http-method>POST</http-method>
+			<http-method>GET</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>tomcat</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+</web-app>

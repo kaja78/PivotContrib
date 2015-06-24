@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>pivot_contrib</groupId>
+	<artifactId>rmiServer</artifactId>
+	<version>1.0</version>
+	<packaging>jar</packaging>
+	<name>pivot_contrib.rmiServer</name>
+	<url>http://maven.apache.org</url>
+
+	<parent>
+		<groupId>pivot_contrib</groupId>
+		<artifactId>dist</artifactId>
+		<version>1.0</version>
+	</parent>
+
+	<dependencies>
+
+		<dependency>
+    	<groupId>javax.servlet</groupId>
+    	<artifactId>javax.servlet-api</artifactId>
+    	<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>pivot_contrib</groupId>
+			<artifactId>util</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/../pivot_contrib.util/target/pivot_contrib.util-1.0.jar/</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>pivot_contrib</groupId>
+			<artifactId>di</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/../pivot_contrib.di/target/pivot_contrib.di-1.0.jar/</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>pivot_contrib</groupId>
+			<artifactId>rmi</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/../pivot_contrib.rmi/target/pivot_contrib.rmi-1.0.jar/</systemPath>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>${project.name}-${project.version}</finalName>
+	</build>
+</project>

@@ -1,0 +1,19 @@
+<!DOCTYPE BXML>
+<Border styles="{padding:5}" title="Contact editor" xmlns:bxml="http://pivot.apache.org/bxml"
+	xmlns:content="org.apache.pivot.wtk.content" xmlns:beans="org.apache.pivot.beans"
+	xmlns="org.apache.pivot.wtk" xmlns:component="pivot_contrib.mvcSample"
+	xmlns:validator="pivot_contrib.util.validator" xmlns:appValidator="pivot_contrib.mvcSample.validator">
+	<validator:ValidatingForm bxml:id="form"
+		context="${model.editedContact}"
+		validator:ValidatingFormListener.contextStoredAndValidated="controller.saveContact()">
+		<Form.Section>
+			<TextInput Form.label="Name" textKey="name" bxml:id="nameInput" />
+			<TextInput Form.label="Phone number" textKey="phoneNumber" />
+			<PushButton buttonData="Save" bxml:id="saveButton"
+				ButtonPressListener.buttonPressed="form.storeAndValidateContext()" />
+		</Form.Section>
+		<beanValidator>
+			<appValidator:ContactValidator />
+		</beanValidator>
+	</validator:ValidatingForm>
+</Border>

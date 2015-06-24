@@ -1,0 +1,15 @@
+Change List
+===========
+
+1.3
+---
+BXMLBrowser
+- Fixed a ClassLoader issue occuring with Apache Pivot 2.0.1
+- inner frame is dynamically resized with the host frame
+
+
+1.2 and earlier
+---------------
+
+- the beginnings -
+

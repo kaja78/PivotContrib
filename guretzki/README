@@ -1,0 +1,9 @@
+"guretzki" as part of the Apache Extras "pivot-contrib" project.
+================================================================
+
+This project contains a number of helpers which are not part of Apache Pivot but are useful in a generic way.
+A jar without debug information is available at http://code.google.com/a/apache-extras.org/p/pivot-contrib/ under "downloads".
+So is another jar with the JavaDoc code.
+
+For getting started, look at the JavaDoc overview at
+http://svn.codespot.com/a/apache-extras.org/pivot-contrib/trunk/guretzki/doc/index.html

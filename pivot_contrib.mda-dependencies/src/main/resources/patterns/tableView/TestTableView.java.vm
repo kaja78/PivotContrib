@@ -1,0 +1,81 @@
+package ${element.parent.name};
+
+import org.apache.pivot.collections.Map;
+import org.apache.pivot.json.JSON;
+import org.apache.pivot.wtk.TableView.Column;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import pivot_contrib.di.AbstractBeanFactory;
+import pivot_contrib.di.BeanFactoryBuilder;
+import pivot_contrib.di.BeanInjector;
+import pivot_contrib.di.ServiceFactory;
+import pivot_contrib.util.launcher.LaunchMocking;
+import pivot_contrib.util.launcher.Launcher;
+import pivot_contrib.util.launcher.LauncherListener;
+import pivot_contrib.util.query.QueryTable;
+import pivot_contrib.util.serializer.InjectingSerializer;
+
+import ${element.superclass.parent.name}.${element.superclass.name}Generator;
+
+public class Test${element.name}View {
+
+	private static final String FORM_BXML = "/${element.packagePath}/${element.name}View.bxml";
+	private Map<String, Object> namespace;
+	
+	private QueryTable tableView;
+		
+	@Before
+	public void setUp() throws Exception {
+		BeanFactoryBuilder.registerBeanFactory(ServiceFactory.class, new AbstractBeanFactory.MockFactory());
+		InjectingSerializer serializer=new InjectingSerializer();
+		serializer.readObject(this.getClass(),FORM_BXML);
+		namespace=serializer.getNamespace();
+		initControls();
+		loadTable();
+	}
+	
+	private void loadTable() {
+		tableView.setTableData(new ${element.superclass.name}Generator().generateList(10));		
+	}
+
+	private void initControls() {
+		tableView=(QueryTable)namespace.get("tableView");
+	}
+	
+	@Test
+	public void testTableColumnMappings() {	
+		Object firstRow=tableView.getTableData().get(0);
+		for (Column column : tableView.getColumns()) {
+			Object cellData = JSON.get(firstRow, column.getName());
+			Assert.assertNotNull("Invalid column name "+column.getName(),cellData);
+		}
+	}
+	
+	public static void main(String[] args) {
+		new Test${element.name}View().launch();
+	}
+	
+	private void launch() {
+		new LaunchMocking().launch(FORM_BXML,new TestLauncherListener());
+	}
+	
+	private class TestLauncherListener implements LauncherListener {
+
+		@Override
+		public void beforeLaunch() {
+			BeanInjector.getBeanInjector().injectDependencies(Test${element.name}View.this);			
+		}
+
+		@Override
+		public void afterLaunch() {
+			namespace=Launcher.getNamespace();
+			initControls();
+			loadTable();			
+		}
+		
+	}
+
+
+}

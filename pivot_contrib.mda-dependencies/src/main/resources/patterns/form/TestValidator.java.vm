@@ -1,0 +1,64 @@
+package ${element.parent.name};
+
+
+import junit.framework.AssertionFailedError;
+import junit.framework.TestCase;
+
+import org.apache.pivot.collections.ArrayList;
+import org.apache.pivot.collections.List;
+import org.apache.pivot.wtk.MessageType;
+
+import pivot_contrib.util.validator.BeanValidationException;
+import pivot_contrib.util.validator.ValidationProblem;
+
+import ${element.superclass.parent.name}.${element.superclass.name};
+
+public class Test${element.superclass.name}Validator extends TestCase {
+		
+	private static final int EMPTY_BEAN_PROBLEM_COUNT = ${element.superclass.attributes.size()}; 
+	
+	private ${element.superclass.name} bean = new ${element.superclass.name}();
+	private ${element.superclass.name} voEmpty = new ${element.superclass.name}();
+	private ${element.superclass.name} voFull = new ${element.superclass.name}(); // TODO: add generated value
+	private ${element.superclass.name}Validator beanValidator = new ${element.superclass.name}Validator();
+	
+	public void testValidateEmptyBean() {
+	    this.bean = this.voEmpty;		
+		assertEquals(EMPTY_BEAN_PROBLEM_COUNT, countValidationProblems());
+	}
+	
+	public void testValidateOK() throws BeanValidationException {
+		this.bean = this.voFull;
+		assertEquals(0, countValidationProblems());
+	}
+	
+#foreach(${attribute} in ${element.superclass.attributes})
+	
+	public void test${utils.capitalize($attribute.name)}Failure() {
+		this.bean = this.voFull;
+		//bean.${attribute.name} = null;
+		ValidationProblem problem = getSingleValidationProblem();
+		assertEquals("", problem.getMessage()); // TODO: add validator message
+		assertEquals(MessageType.ERROR, problem.getMessageType());
+	}
+#end
+	
+	protected ValidationProblem getSingleValidationProblem() {
+		List<ValidationProblem> problems = getValidationProblems();
+		assertEquals("Not exactly one validation problem found.", 1, problems.getLength());
+		return getValidationProblems().get(0);
+	}
+	
+	protected int countValidationProblems() {
+		return getValidationProblems().getLength();
+	}
+	
+	protected List<ValidationProblem> getValidationProblems() {		
+		try {
+			beanValidator.validate(bean);
+		} catch (BeanValidationException e) {
+			return e.getValidationProblems();
+		}
+		return new ArrayList<ValidationProblem>();
+	}
+}

@@ -1,0 +1,7 @@
+<!DOCTYPE Context>
+<Context>
+	<Resource auth="Container" driverClassName="org.hsqldb.jdbcDriver"
+			name="jdbc/mvcSampleDB" 
+			type="javax.sql.DataSource" url="jdbc:hsqldb:mem:mvcSampleDB"
+			username="SA" />
+</Context>		

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:Pattern xmlns:tns="http://www.example.org/dirigent-pattern/"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/dirigent-pattern/ ../dirigent-pattern.xsd ">
+	<Documentation>Pattern for generating value object files.</Documentation>
+
+	<PatternStep name="ValueObjectGenerator" type="File">
+		<Parameter name="fileName" value="test/${element.packagePath}/${element.name}Generator.java" />
+		<Parameter name="mode" value="create" />
+		<Template>#parse("/patterns/valueObject/Generator.java.vm")</Template>
+	</PatternStep>	
+
+</tns:Pattern>

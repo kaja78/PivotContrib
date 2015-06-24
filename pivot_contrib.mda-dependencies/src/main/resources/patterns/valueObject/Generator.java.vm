@@ -1,0 +1,15 @@
+package ${element.parent.name};
+
+import pivot_contrib.util.generator.AbstractGenerator;
+
+public class ${element.name}Generator extends AbstractGenerator<${element.name}> {
+
+	@Override
+	public ${element.name} generateValue(int i) {
+		${element.name} vo=new ${element.name}();
+#foreach(${attribute} in ${element.attributes})		
+		vo.${attribute.name}=new ${attribute.type}(""+i);
+#end		
+		return vo;
+	}
+}

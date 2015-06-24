@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:Pattern xmlns:tns="http://www.example.org/dirigent-pattern/"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/dirigent-pattern/ ../dirigent-pattern.xsd ">
+	<Documentation>Pattern for generating Pivot View files.</Documentation>
+	<PatternStep name="Model" type="File">
+		<Parameter name="fileName" value="src/${element.packagePath}/${element.name}Model.java" />
+		<Parameter name="mode" value="overwrite_read_only" />
+		<Template>#parse("/patterns/view/Model.java.vm")</Template>
+	</PatternStep>
+	<PatternStep name="ModelListener" type="File">
+		<Parameter name="fileName" value="src/${element.packagePath}/${element.name}ModelListener.java" />
+		<Parameter name="mode" value="overwrite_read_only" />
+		<Template>#parse("/patterns/view/ModelListener.java.vm")</Template>
+	</PatternStep>
+	<PatternStep name="Controller" type="File">
+		<Parameter name="fileName" value="src/${element.packagePath}/${element.name}Controller.java" />
+		<Parameter name="mode" value="create" />
+		<Template>#parse("/patterns/view/Controller.java.vm")</Template>
+	</PatternStep>
+	<PatternStep name="View" type="File">
+		<Parameter name="fileName" value="src/${element.packagePath}/${element.name}View.bxml" />
+		<Parameter name="mode" value="create" />
+		<Template>#parse("/patterns/view/View.bxml.vm")</Template>
+	</PatternStep>
+	<PatternStep name="TestController" type="File">
+		<Parameter name="fileName" value="test/${element.packagePath}/Test${element.name}Controller.java" />
+		<Parameter name="mode" value="create" />
+		<Template>#parse("/patterns/view/TestController.java.vm")</Template>
+	</PatternStep>
+	<PatternStep name="TestView" type="File">
+		<Parameter name="fileName" value="test/${element.packagePath}/Test${element.name}View.java" />
+		<Parameter name="mode" value="create" />
+		<Template>#parse("/patterns/view/TestView.java.vm")</Template>
+	</PatternStep>
+
+</tns:Pattern>

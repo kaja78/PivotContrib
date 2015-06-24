@@ -1,0 +1,9 @@
+package ${element.parent.name};
+
+import pivot_contrib.di.Inject;
+
+public class ${element.name}Controller {
+	@Inject
+	private ${element.name}Model model;
+
+}

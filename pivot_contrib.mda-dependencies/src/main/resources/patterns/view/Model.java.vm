@@ -1,0 +1,21 @@
+package ${element.parent.name};
+
+import org.apache.pivot.util.ListenerList;
+
+import pivot_contrib.di.RuntimeScoped;
+import pivot_contrib.util.model.Model;
+
+/**
+ * This file is generated. Do not modify it!!!
+ */
+@Model
+@RuntimeScoped
+public interface ${element.name}Model {
+	public ListenerList<${element.name}ModelListener> get${element.name}ModelListeners();
+	
+	#foreach(${attribute} in ${element.attributes})
+	
+	public ${attribute.type} get${utils.capitalize($attribute.name)}();
+	public void set${utils.capitalize($attribute.name)}(${attribute.type} ${attribute.name});
+	#end
+}

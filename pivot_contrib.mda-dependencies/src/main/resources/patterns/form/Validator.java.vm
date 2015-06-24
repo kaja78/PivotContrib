@@ -1,0 +1,18 @@
+package ${element.parent.name};
+
+import org.apache.pivot.wtk.MessageType;
+
+import ${element.superclass.parent.name}.${element.superclass.name};
+import pivot_contrib.util.validator.BeanValidatorAdapter;
+
+public class ${element.superclass.name}Validator extends BeanValidatorAdapter<${element.superclass.name}> {
+
+	@Override
+	public void validateBean(${element.superclass.name} bean) {
+#foreach(${attribute} in ${element.superclass.attributes})
+			assertProblem("${attribute.name}", MessageType.ERROR, "Validation not implemented yet.", true);
+#end	
+		
+	}
+
+}

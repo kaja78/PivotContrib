@@ -1,0 +1,10 @@
+package ${element.parent.name};
+
+public interface ${element.name}ModelListener {
+	#foreach(${attribute} in ${element.attributes})	
+	public void ${attribute.name}Changed(Object bean);	
+	#end
+	
+
+	
+}

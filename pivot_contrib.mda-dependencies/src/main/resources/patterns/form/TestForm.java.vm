@@ -1,0 +1,83 @@
+package ${element.parent.name};
+
+import junit.framework.TestCase;
+
+import org.apache.pivot.collections.Map;
+import org.apache.pivot.wtk.TextInput;
+
+import pivot_contrib.di.AbstractBeanFactory;
+import pivot_contrib.di.BeanFactoryBuilder;
+import pivot_contrib.di.BeanInjector;
+import pivot_contrib.di.ServiceFactory;
+import pivot_contrib.util.launcher.LaunchMocking;
+import pivot_contrib.util.launcher.Launcher;
+import pivot_contrib.util.launcher.LauncherListener;
+import pivot_contrib.util.serializer.InjectingSerializer;
+import pivot_contrib.util.validator.ValidatingForm;
+
+import ${element.superclass.parent.name}.${element.superclass.name};
+import ${element.superclass.parent.name}.${element.superclass.name}Generator;
+
+public class Test${element.name} extends TestCase {
+	private static final String FORM_BXML = "/${element.packagePath}/${element.name}.bxml";
+	private Map<String, Object> namespace;
+	private ${element.superclass.name} bean;
+	
+	private ValidatingForm form;
+#foreach(${attribute} in ${element.superclass.attributes})	
+	private TextInput ${attribute.name}Input;
+#end
+		
+	@Override
+	protected void setUp() throws Exception {
+		BeanFactoryBuilder.registerBeanFactory(ServiceFactory.class, new AbstractBeanFactory.MockFactory());
+		InjectingSerializer serializer=new InjectingSerializer();
+		serializer.readObject(this.getClass(),FORM_BXML);
+		namespace=serializer.getNamespace();
+		initInputs();
+		loadForm();
+	}
+	
+	private void initInputs() {
+#foreach(${attribute} in ${element.superclass.attributes})
+		${attribute.name}Input=(TextInput)namespace.get("${attribute.name}Input");
+#end		
+		form=(ValidatingForm)namespace.get("form");
+	}
+	
+	private void loadForm() {
+		bean=new ${element.superclass.name}Generator().generateValue();		
+		form.setContext(bean);
+	}
+	
+#foreach(${attribute} in ${element.superclass.attributes})
+	public void test${utils.capitalize($attribute.name)}() {
+		assertEquals(bean.${attribute.name}, ${attribute.name}Input.getText());
+	}
+#end
+
+		public static void main(String[] args) {
+		new Test${element.name}().launch();		
+	}
+	
+	private void launch() {
+		new LaunchMocking().launch(FORM_BXML,new TestLauncherListener());
+	}
+	
+	private class TestLauncherListener implements LauncherListener {
+
+		@Override
+		public void beforeLaunch() {
+			BeanInjector.getBeanInjector().injectDependencies(Test${element.name}.this);			
+		}
+
+		@Override
+		public void afterLaunch() {
+			namespace=Launcher.getNamespace();
+			initInputs();
+			loadForm();			
+		}
+		
+	}
+
+}

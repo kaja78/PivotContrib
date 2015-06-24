@@ -1,0 +1,22 @@
+<!DOCTYPE BXML>
+<Border styles="{padding:5}" title="${element.name}" 
+	xmlns:bxml="http://pivot.apache.org/bxml"
+	xmlns:content="org.apache.pivot.wtk.content" xmlns:beans="org.apache.pivot.beans"
+	xmlns="org.apache.pivot.wtk"
+	xmlns:validator="pivot_contrib.util.validator"  
+	xmlns:view="${element.parent.name}">
+	<validator:ValidatingForm bxml:id="form">
+		<!-- validator:ValidatingFormListener.contextStoredAndValidated="controller.saveRecord()" -->
+		<!-- context="${model.editedRecord}" -->
+		<Form.Section>
+			#foreach(${attribute} in ${element.superclass.attributes})
+			<TextInput Form.label="${attribute.name}" textKey="${attribute.name}" bxml:id="${attribute.name}Input" enabled="${form.enabled}"/>
+#end
+			<PushButton buttonData="Save" bxml:id="saveButton"
+				ButtonPressListener.buttonPressed="form.storeAndValidateContext()" />
+		</Form.Section>
+		<beanValidator>
+			<view:${element.superclass.name}Validator/>
+		</beanValidator>
+	</validator:ValidatingForm>
+</Border>

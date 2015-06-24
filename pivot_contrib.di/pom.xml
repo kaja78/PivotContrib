@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>pivot_contrib</groupId>
+	<artifactId>di</artifactId>
+	<version>1.0</version>
+	<packaging>jar</packaging>
+	<name>pivot_contrib.di</name>
+	<url>http://maven.apache.org</url>
+
+	<parent>
+		<groupId>pivot_contrib</groupId>
+		<artifactId>dist</artifactId>
+		<version>1.0</version>
+	</parent>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.apache.pivot</groupId>
+			<artifactId>pivot-wtk</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>${project.name}-${project.version}</finalName>
+	</build>
+</project>

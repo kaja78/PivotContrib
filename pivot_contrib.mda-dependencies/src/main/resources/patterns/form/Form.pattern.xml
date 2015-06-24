@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:Pattern xmlns:tns="http://www.example.org/dirigent-pattern/"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/dirigent-pattern/ ../dirigent-pattern.xsd ">
+	<Documentation>Pattern for generating Pivot Form files.</Documentation>
+	<PatternStep name="Form" type="File">
+		<Parameter name="fileName" value="src/${element.packagePath}/${element.name}.bxml" />
+		<Parameter name="mode" value="create" />
+		<Template>#parse("/patterns/form/Form.bxml.vm")</Template>
+	</PatternStep>
+	<PatternStep name="TestForm" type="File">
+		<Parameter name="fileName" value="test/${element.packagePath}/Test${element.name}.java" />
+		<Parameter name="mode" value="create" />
+		<Template>#parse("/patterns/form/TestForm.java.vm")</Template>
+	</PatternStep>
+	<PatternStep name="Validator" type="File">
+		<Parameter name="fileName" value="src/${element.packagePath}/${element.superclass.name}Validator.java" />
+		<Parameter name="mode" value="create" />
+		<Template>#parse("/patterns/form/Validator.java.vm")</Template>
+	</PatternStep>
+	<PatternStep name="TestValidator" type="File">
+		<Parameter name="fileName" value="test/${element.packagePath}/Test${element.superclass.name}Validator.java" />
+		<Parameter name="mode" value="create" />
+		<Template>#parse("/patterns/form/TestValidator.java.vm")</Template>
+	</PatternStep>
+
+</tns:Pattern>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<display-name>pivot-mvcSample-server</display-name>
+	<mime-mapping>
+		<extension>jnlp</extension>
+		<mime-type>application/x-java-jnlp-file</mime-type>
+	</mime-mapping>
+	<filter>
+		<filter-name>RMISerializerFilter</filter-name>
+		<filter-class>pivot_contrib.rmiServer.RMISerializerFilter</filter-class>
+	</filter>
+	<filter>
+		<filter-name>ConnectionProviderFilter</filter-name>
+		<filter-class>pivot_contrib.rmiServer.ConnectionProviderFilter</filter-class>
+		<init-param>
+			<description>JNDI name of application datasource.</description>
+			<param-name>dataSourceJndiName</param-name>
+			<param-value>jdbc/mvcSampleDB</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>RMISerializerFilter</filter-name>
+		<url-pattern>/rmi</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>ConnectionProviderFilter</filter-name>
+		<url-pattern>/rmi</url-pattern>
+	</filter-mapping>
+	<servlet>
+		<servlet-name>RMIServlet</servlet-name>
+		<servlet-class>pivot_contrib.rmiServer.RMIServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RMIServlet</servlet-name>
+		<url-pattern>/rmi</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Sample security configuration. -->
+	<!--
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
+	
+	<security-role>
+		<role-name>tomcat</role-name>
+	</security-role>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Java Webstart libraries</web-resource-name>
+			<url-pattern>/jws-lib/*</url-pattern>
+		</web-resource-collection>
+	
+		<web-resource-collection>
+			<web-resource-name>RMI endpoint</web-resource-name>
+			<url-pattern>/rmi</url-pattern>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+
+		<auth-constraint>
+			<role-name>tomcat</role-name>
+		</auth-constraint>
+	</security-constraint>
+	 -->
+</web-app>

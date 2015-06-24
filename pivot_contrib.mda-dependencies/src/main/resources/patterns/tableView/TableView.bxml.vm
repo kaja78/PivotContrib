@@ -1,0 +1,21 @@
+<!DOCTYPE BXML>
+<Border title="${element.name}" xmlns:bxml="http://pivot.apache.org/bxml"
+	xmlns="org.apache.pivot.wtk" 
+	xmlns:query="pivot_contrib.util.query">
+	<ScrollPane horizontalScrollBarPolicy="fill_to_capacity">
+		<query:QueryTable bxml:id="tableView">
+		<!-- tableData="${model.tableData}" -->
+			<columns>
+#foreach(${attribute} in ${element.superclass.attributes})
+				<TableView.Column name="${attribute.name}" width="1*"
+					headerData="${attribute.name}" />
+#end
+			</columns>
+		</query:QueryTable>
+
+		<columnHeader>
+			<TableViewHeader tableView="$tableView"
+				sortMode="single_column" />
+		</columnHeader>		
+	</ScrollPane>
+</Border>

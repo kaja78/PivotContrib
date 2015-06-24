@@ -1,0 +1,65 @@
+package ${element.parent.name};
+
+import static org.junit.Assert.fail;
+
+import org.apache.pivot.collections.Map;
+import org.junit.Before;
+import org.junit.Test;
+
+import pivot_contrib.di.AbstractBeanFactory;
+import pivot_contrib.di.BeanFactoryBuilder;
+import pivot_contrib.di.BeanInjector;
+import pivot_contrib.di.Inject;
+import pivot_contrib.di.ServiceFactory;
+import pivot_contrib.util.launcher.LaunchMocking;
+import pivot_contrib.util.launcher.LauncherListener;
+import pivot_contrib.util.serializer.InjectingSerializer;
+
+public class Test${element.name}View {
+
+	private static final String VIEW_BXML = "/${element.packagePath}/${element.name}View.bxml";
+	
+	protected Map<String, Object> namespace;
+	
+	@Inject
+	private ${element.name}Model model;
+	
+	@Inject
+	private ${element.name}Controller controller;
+	
+	@Before
+	public void init() throws Exception {
+		BeanFactoryBuilder.registerBeanFactory(ServiceFactory.class, new AbstractBeanFactory.MockFactory());
+		BeanInjector.getBeanInjector().injectDependencies(this);
+		InjectingSerializer injectingSerializer = new InjectingSerializer();
+		injectingSerializer.readObject(this.getClass(), VIEW_BXML);
+		namespace=injectingSerializer.getNamespace();
+	}
+	
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+	
+	public static void main(String args[]) {
+		new Test${element.name}View().launch();
+	}
+	
+	private void launch() {
+		new LaunchMocking().launch(VIEW_BXML, new TestingLauncherListener());
+	}
+	
+	private class TestingLauncherListener implements LauncherListener {
+
+		@Override
+		public void beforeLaunch() {
+			BeanInjector.getBeanInjector().injectDependencies(Test${element.name}View.this);
+			//model.setTableData()
+		}
+		@Override
+		public void afterLaunch() {
+			//model.setEditedRecord()						
+		}
+	}	
+
+}

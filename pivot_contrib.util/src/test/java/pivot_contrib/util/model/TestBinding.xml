@@ -1,0 +1,16 @@
+<!DOCTYPE BXML>
+<Form xmlns:bxml="http://pivot.apache.org/bxml"
+	xmlns="org.apache.pivot.wtk" xmlns:component="pivot_contrib.util.model"
+	>
+	
+	<bxml:define>
+		<component:TestingController bxml:id="controller"/>
+		<component:TestingModel bxml:id="model" message="${textInput.text}"/>			
+	</bxml:define>
+	<Form.Section >
+	<TextInput bxml:id="textInput" text="${model.message}"/>
+	<TextInput bxml:id="textInput2" text="${model.message}"/>
+	</Form.Section>
+</Form>
+	
+	
