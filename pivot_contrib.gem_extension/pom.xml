@@ -15,6 +15,11 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>org.apache.pivot</groupId>
 			<artifactId>pivot-wtk</artifactId>
 		</dependency>
