@@ -1,12 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>guretzki</artifactId>
+	<artifactId>gem_extension</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
-	<name>guretzki</name>
+	<name>pivot_contrib.gem_extension</name>
 	<url>http://maven.apache.org</url>
-
 
 	<parent>
 		<groupId>pivot_contrib</groupId>
@@ -19,16 +18,9 @@
 			<groupId>org.apache.pivot</groupId>
 			<artifactId>pivot-wtk</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-		</dependency>
 	</dependencies>
 
 	<build>
 		<finalName>${project.name}-${project.version}</finalName>
 	</build>
-
 </project>
-
