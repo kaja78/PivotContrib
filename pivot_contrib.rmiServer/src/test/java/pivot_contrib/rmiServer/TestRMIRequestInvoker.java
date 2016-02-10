@@ -5,7 +5,6 @@ import pivot_contrib.rmi.RMIRequest;
 import pivot_contrib.rmi.RMIRequestInvoker;
 import pivot_contrib.rmi.TestingService;
 import pivot_contrib.rmi.TestingServiceBean;
-
 public class TestRMIRequestInvoker extends TestCase {
 
 	public void testInvokeWithNoParameter() {

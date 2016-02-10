@@ -61,9 +61,7 @@
 	</dependencyManagement>
 
 	<modules>
-		<module>guretzki</module>
 		<module>pivot_contrib.di</module>
-		<module>pivot_contrib.guicy_apache_pivot</module>
 		<module>pivot_contrib.mda-dependencies</module>
 		<module>pivot_contrib.mdaSample</module>
 		<module>pivot_contrib.util</module>
@@ -72,8 +70,6 @@
 		<module>pivot_contrib.mvcSample-api</module>
 		<module>pivot_contrib.mvcSample-server</module>
 		<module>pivot_contrib.mvcSample</module>
-		<module>pivot_contrib.gem_extension</module>
-		<module>gem-pivot-dependencies</module>
 	</modules>
 
 

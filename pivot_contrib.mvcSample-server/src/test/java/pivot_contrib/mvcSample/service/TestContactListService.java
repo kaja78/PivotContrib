@@ -4,7 +4,7 @@ import javax.sql.DataSource;
 
 import junit.framework.TestCase;
 
-import org.hsqldb.jdbc.jdbcDataSource;
+import org.hsqldb.jdbc.JDBCDataSource;
 
 import pivot_contrib.di.BeanFactoryBuilder;
 import pivot_contrib.di.BeanInjector;
@@ -23,7 +23,7 @@ public class TestContactListService extends TestCase {
 	}
 
 	private void configLocal(){
-		jdbcDataSource ds=new jdbcDataSource();
+		JDBCDataSource ds=new JDBCDataSource();
 		ds.setDatabase("jdbc:hsqldb:mem:mvcSampleDB");
 		ds.setUser("SA");
 		ResourceFactory rf=(ResourceFactory)BeanFactoryBuilder.getBeanFactory(ResourceFactory.class);

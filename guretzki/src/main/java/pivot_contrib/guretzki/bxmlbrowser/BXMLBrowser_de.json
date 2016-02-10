@@ -1,6 +1,0 @@
-{
-    endTest: "Test beenden"
-   ,reload: "Neu laden (F5)"
-   ,loadAndTest: "gewählte Datei testen"
-   ,currentFile: "aktuell im Test: "
-}

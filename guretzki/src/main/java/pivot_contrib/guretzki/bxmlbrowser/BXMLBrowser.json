@@ -1,6 +1,0 @@
-{
-    endTest: "End test"
-   ,reload: "Reload (F5)"
-   ,loadAndTest: "test selected file"
-   ,currentFile: "currently testing: "
-}

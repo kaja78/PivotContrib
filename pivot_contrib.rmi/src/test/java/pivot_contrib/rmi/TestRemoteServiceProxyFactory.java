@@ -17,7 +17,7 @@ public class TestRemoteServiceProxyFactory extends TestCase {
 	
 	public TestRemoteServiceProxyFactory() {
 		
-		new RemoteServiceProxyFactory("http://localhost:8080/pivot_contrib.rmiServer/secured/rmi",TOMCAT_BASIC_AUTHENTICATION).register();
+		new RemoteServiceProxyFactory("http://localhost:8080/rmiServer/secured/rmi",TOMCAT_BASIC_AUTHENTICATION).register();
 		BeanInjector.getBeanInjector().injectDependencies(this);
 	}
 
