@@ -12,7 +12,7 @@ import pivot_contrib.rmi.RMISerializer;
 
 
 public class TestRMISerializerFilter extends TestCase {
-	private static final String TEST_URL="http://localhost:8080/pivot_contrib.rmiServer/rmi";
+	private static final String TEST_URL="http://localhost:8080/rmiServer/rmi";
 	
 	private HttpURLConnection createConnection() throws Exception {
 		return (HttpURLConnection)new URL(TEST_URL).openConnection();
@@ -34,20 +34,7 @@ public class TestRMISerializerFilter extends TestCase {
 	public void testBadPost() throws Exception{
 		HttpURLConnection c=createConnection();
 		c.setRequestMethod("POST");
-		assertEquals(HttpURLConnection.HTTP_OK, c.getResponseCode());
-		
-		RMISerializer serializer=new RMISerializer();
-		RMIExceptionResponse exceptionResponse=(RMIExceptionResponse)serializer.readResponse((InputStream)c.getContent());
-
-		RMIException exception=null;
-		try {
-			exceptionResponse.getResult();
-		} catch (RMIException e) {
-			exception=e;
-		}
-		
-		assertNotNull(exception);
-		assertEquals("Root cause: pivot_contrib.rmi.RemoteException: java.io.EOFException", exception.getMessage());
+		assertEquals(HttpURLConnection.HTTP_BAD_REQUEST, c.getResponseCode());		
 	}
 
 }

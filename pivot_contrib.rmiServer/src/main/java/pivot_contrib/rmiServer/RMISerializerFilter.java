@@ -82,6 +82,9 @@ public class RMISerializerFilter implements Filter {
 			try {
 				initRMIRequestContext();
 				doFilter();
+			} catch (BadRequestException e) {
+				response.setStatus(HttpURLConnection.HTTP_BAD_REQUEST);
+				return;
 			} catch (Exception e) {
 				handleException(e);
 			}
@@ -116,13 +119,9 @@ public class RMISerializerFilter implements Filter {
 		}
 
 		private void initRMIRequestContext() throws Exception {
-			RMIRequest rmiRequest = null;
-			try {
-				rmiRequest = getRmiRequest();
-				new AccessChecker(rmiRequest).checkAccess();
-			} finally {
-				RMIRequestContext.init(rmiRequest, request, response);
-			}
+			RMIRequest rmiRequest = getRmiRequest();
+			RMIRequestContext.init(rmiRequest, request, response);
+			new AccessChecker(rmiRequest).checkAccess();
 		}
 
 		private RMIRequest getRmiRequest() throws Exception {
@@ -130,7 +129,7 @@ public class RMISerializerFilter implements Filter {
 				InputStream in = request.getInputStream();
 				return serializer.readRequest(in);
 			} catch (Exception e) {
-				throw new Exception("Invalid request.", e);
+				throw new BadRequestException();
 			}
 		}
 

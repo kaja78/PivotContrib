@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>mdaSample</artifactId>
-	<version>1.0</version>
+	<version>1.0.1</version>
 	<packaging>jar</packaging>
 	<name>pivot_contrib.mdaSample</name>
 	<url>http://maven.apache.org</url>
@@ -10,7 +10,7 @@
 	<parent>
 		<groupId>pivot_contrib</groupId>
 		<artifactId>dist</artifactId>
-		<version>1.0</version>
+		<version>1.0.1</version>
 	</parent>
 
 	<dependencies>
@@ -22,9 +22,7 @@
 		<dependency>
 			<groupId>pivot_contrib</groupId>
 			<artifactId>mda-dependencies</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/../pivot_contrib.mda-dependencies/target/pivot_contrib.mda-dependencies-1.0.jar/</systemPath>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 

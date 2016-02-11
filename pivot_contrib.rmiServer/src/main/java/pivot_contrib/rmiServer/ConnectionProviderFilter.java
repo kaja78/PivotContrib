@@ -25,13 +25,12 @@ public class ConnectionProviderFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		ConnectionProvider.remove();
-		boolean doRollback = false;
+		boolean doRollback = true;
 		try {
 			chain.doFilter(request, response);
+			doRollback=false;
 		} catch (ApplicationException e) {
 			doRollback=e.isDoRollback();
-		} catch (RuntimeException e) {
-			throw e;
 		} finally {
 			releaseConnection(doRollback);
 		}
