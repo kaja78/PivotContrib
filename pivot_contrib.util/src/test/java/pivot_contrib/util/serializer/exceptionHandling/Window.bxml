@@ -1,0 +1,14 @@
+<Window title="Priviliged Actions" maximized="true"
+    xmlns:bxml="http://pivot.apache.org/bxml"
+    xmlns="org.apache.pivot.wtk"
+    xmlns:util="pivot_contrib.util.serializer.exceptionHandling">
+    
+     <bxml:define>
+     	<util:Actions bxml:id="actions"/>
+     </bxml:define>
+   <BoxPane styles="{padding:4, horizontalAlignment:'center',
+            verticalAlignment:'center'}">
+            <PushButton  buttonData="ApplicationException" ButtonPressListener.buttonPressed="actions.throwApplicationException()"/>
+            <PushButton  buttonData="RuntimeException" ButtonPressListener.buttonPressed="actions.throwRuntimeException()"/>
+    </BoxPane>
+</Window>

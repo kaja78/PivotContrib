@@ -15,7 +15,7 @@ import pivot_contrib.di.BeanFactoryBuilder;
  * Loads an object hierarchy from an XML document and inject dependencies to
  * namespace and instances.
  * 
- * @author Karel Hübl
+ * @author Karel Hï¿½bl
  */
 public class InjectingSerializer extends BXMLSerializer {
 	static {
@@ -64,8 +64,15 @@ public class InjectingSerializer extends BXMLSerializer {
 		}
 	}
 	
-	protected void reportException(Exception exception) {		
-		ApplicationContextHelper.handleUncaughtException(exception);
+	@Override
+	protected void reportException(Throwable t) {
+		Exception e;
+		if (t instanceof Exception) {
+			e=(Exception)t;
+		} else {
+			e=new RuntimeException(t);
+		}
+		ApplicationContextHelper.handleUncaughtException(e);
 	}
 
 	
