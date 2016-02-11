@@ -22,33 +22,25 @@
 		<dependency>
 			<groupId>pivot_contrib</groupId>
 			<artifactId>util</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/../pivot_contrib.util/target/pivot_contrib.util-1.0.jar/</systemPath>
+			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>pivot_contrib</groupId>
 			<artifactId>di</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/../pivot_contrib.di/target/pivot_contrib.di-1.0.jar/</systemPath>
+			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>pivot_contrib</groupId>
 			<artifactId>rmi</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/../pivot_contrib.rmi/target/pivot_contrib.rmi-1.0.jar/</systemPath>
+			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>pivot_contrib</groupId>
 			<artifactId>mvcSample-api</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/../pivot_contrib.mvcSample-api/target/pivot_contrib.mvcSample-api-1.0.jar/</systemPath>
+			<version>${project.version}</version>
 		</dependency>
 
 	</dependencies>
