@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-import org.hsqldb.jdbc.JDBCDataSource;
+import org.hsqldb.jdbc.jdbcDataSource;
 
 import pivot_contrib.di.BeanFactoryBuilder;
 import pivot_contrib.di.ResourceFactory;
@@ -23,7 +23,7 @@ public class TestingDatabaseBuilder {
 	}
 
 	private static void createDatabase() throws SQLException {
-		JDBCDataSource ds= new JDBCDataSource();
+		jdbcDataSource ds= new jdbcDataSource();
 		ds.setDatabase("jdbc:hsqldb:mem:aname");
 		ds.setUser("SA");
 		Connection c=ds.getConnection();
